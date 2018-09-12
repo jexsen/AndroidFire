@@ -20,12 +20,12 @@ import rx.subjects.Subject;
  * Created by xsf
  * on 2016.08.14:50
  */
-public class RxBus {
+public class RxBus {//组件之间的通信技术RxBus
     private static RxBus instance;
 
-    public static synchronized RxBus getInstance() {
+    public static synchronized RxBus getInstance() {//拿到实例
         if (null == instance) {
-            instance = new RxBus();
+            instance = new RxBus();//创建RxBus对象
         }
         return instance;
     }
@@ -33,6 +33,8 @@ public class RxBus {
     private RxBus() {
     }
 
+    //Object表示时间类型，List<Subject>指对应Object事件类型的subject列表
+    //例如 NEWS_LIST_TO_TOP 事件 就有两个subject观察它
     @SuppressWarnings("rawtypes")
     private ConcurrentHashMap<Object, List<Subject>> subjectMapper = new ConcurrentHashMap<Object, List<Subject>>();
 

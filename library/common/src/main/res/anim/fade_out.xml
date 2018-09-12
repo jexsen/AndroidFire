@@ -3,3 +3,8 @@
     android:interpolator="@android:anim/accelerate_interpolator"
     android:fromAlpha="1.0" android:toAlpha="0.0"
     android:duration="300" />
+
+    <!--android:interpolator="@android:anim/accelerate_interpolator" 设置动画加速-->
+    <!--android:fromAlpha="1.0" 动画起始时透明度为1.0-->
+    <!--android:toAlpha="0.0"  动画结束时透明度为0.0-->
+    <!--android:duration="300"  持续时间为0.3秒-->

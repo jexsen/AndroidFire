@@ -14,16 +14,16 @@ import rx.Observable;
  * Created by xsf
  * on 2016.09.11:53
  */
-public interface NewsMainContract {
+public interface NewsMainContract {//协议
 
     interface Model extends BaseModel {
-        Observable< List<NewsChannelTable> > lodeMineNewsChannels();
+        Observable< List<NewsChannelTable> > lodeMineNewsChannels();//用于提供数据。
     }
 
     interface View extends BaseView {
-        void returnMineNewsChannels(List<NewsChannelTable> newsChannelsMine);
+        void returnMineNewsChannels(List<NewsChannelTable> newsChannelsMine);//用于显示数据。
     }
     abstract static class Presenter extends BasePresenter<View, Model> {
-        public abstract void lodeMineChannelsRequest();
+        public abstract void lodeMineChannelsRequest();//lodeMineChannelsRequest中调用Model 的lodeMineNewsChannels方法获取数据，然后调用View 的returnMineNewsChannels方法将数据进行显示。
     }
 }

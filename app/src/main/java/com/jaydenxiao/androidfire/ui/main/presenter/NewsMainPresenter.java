@@ -14,7 +14,7 @@ import rx.functions.Action1;
  * Created by xsf
  * on 2016.09.17:43
  */
-public class NewsMainPresenter extends NewsMainContract.Presenter{
+public class NewsMainPresenter extends NewsMainContract.Presenter{//每一个presenter都需要一个M和一个V，所有public void setVM(T v, E m) 会在BasePresenter进行声明。
 
     @Override
     public void onStart() {
@@ -33,10 +33,11 @@ public class NewsMainPresenter extends NewsMainContract.Presenter{
 
     @Override
     public void lodeMineChannelsRequest() {
+        //在lodeMineChannelsRequest中调用Model 的lodeMineNewsChannels方法获取数据
         mRxManage.add(mModel.lodeMineNewsChannels().subscribe(new RxSubscriber<List<NewsChannelTable>>(mContext,false) {
             @Override
             protected void _onNext(List<NewsChannelTable> newsChannelTables) {
-                mView.returnMineNewsChannels(newsChannelTables);
+                mView.returnMineNewsChannels(newsChannelTables);//调用View 的returnMineNewsChannels方法将数据进行显示。
             }
 
             @Override

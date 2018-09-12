@@ -25,8 +25,8 @@ public class SplashActivity extends BaseActivity {
     TextView tvName;
 
     @Override
-    public int getLayoutId() {
-        return R.layout.act_splash;
+    public int getLayoutId() {  //获取布局文件方法
+        return R.layout.act_splash;   //返回当前布局文件
     }
 
     @Override
@@ -36,16 +36,20 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        SetTranslanteBar();
+        SetTranslanteBar();//沉浸状态栏（4.4以上系统有效）
+
         PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", 0.3f, 1f);
         PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat("scaleX", 0.3f, 1f);
         PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat("scaleY", 0.3f, 1f);
+
         ObjectAnimator objectAnimator1 = ObjectAnimator.ofPropertyValuesHolder(tvName, alpha, scaleX, scaleY);
         ObjectAnimator objectAnimator2 = ObjectAnimator.ofPropertyValuesHolder(ivLogo, alpha, scaleX, scaleY);
 
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(objectAnimator1, objectAnimator2);
-        animatorSet.setInterpolator(new AccelerateInterpolator());
+        animatorSet.playTogether(objectAnimator1, objectAnimator2); //让两个动画同时运行
+
+        animatorSet.setInterpolator(new AccelerateInterpolator());//设置动画加速运行
+
         animatorSet.setDuration(2000);
         animatorSet.addListener(new Animator.AnimatorListener() {
             @Override
@@ -54,9 +58,9 @@ public class SplashActivity extends BaseActivity {
             }
 
             @Override
-            public void onAnimationEnd(Animator animator) {
-                MainActivity.startAction(SplashActivity.this);
-                finish();
+            public void onAnimationEnd(Animator animator) {//动画结束时
+                MainActivity.startAction(SplashActivity.this);  //调用MainActivity自己写的startAction方法启动MainActivity
+                finish();  //结束当前Activity
             }
 
             @Override
@@ -69,7 +73,7 @@ public class SplashActivity extends BaseActivity {
 
             }
         });
-        animatorSet.start();
+        animatorSet.start();//启动动画
     }
 
 }
